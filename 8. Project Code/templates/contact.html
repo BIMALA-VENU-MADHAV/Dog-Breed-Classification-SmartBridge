@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team | Dog Breed Classifier</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">DogClassifier</a>
+
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/contact" class="nav-link active">Contact</a></li>
+
+                {% if session.get("user_id") %}
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="nav-link user-btn" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        {{ session.get("username") }}
+                        <i class="fas fa-chevron-down small"></i>
+                    </a>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <a href="/logout">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                <li><a href="/login" class="nav-btn">Login</a></li>
+                <li><a href="/signup" class="nav-btn-outline">Signup</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section class="team-section">
+        <div class="team-container">
+
+            <h1 class="team-title">Meet Our Team</h1>
+            <p class="team-subtitle">
+                A passionate team of developers behind the Dog Breed Classifier project
+            </p>
+
+            <div class="team-grid">
+
+                <!-- Team Leader -->
+                <div class="team-card leader">
+                    <div class="team-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Katta Ram Sai Kumar</h3>
+                    <div class="social">
+                        <a href="mailto:kattanani25@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/KATTA-RAM-SAI-KUMAR" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 1 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Bimala Venu Madhav</h3>
+                    <div class="social">
+                        <a href="mailto:venubimala1234@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/BIMALA-VENU-MADHAV" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Kadiri Dinesh</h3>
+                    <div class="social">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Sarai Chiranjeevi</h3>
+                    <div class="social">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const toggle = document.getElementById("navToggle");
+        const menu = document.getElementById("navMenu");
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+    </script>
+
+    <script>
+        const userBtn = document.getElementById("userMenuBtn");
+        const dropdown = document.getElementById("userDropdown");
+
+        userBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            dropdown.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function () {
+            dropdown.classList.remove("show");
+        });
+    </script>
+
+
+</body>
+
+</html>

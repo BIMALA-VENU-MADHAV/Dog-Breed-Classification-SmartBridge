@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signup | Dog Breed Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <section class="auth-container">
+
+        <div class="auth-box">
+
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Join the AI Dog Breed Classifier</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+            <form method="POST">
+
+                <div class="input-field">
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                    <span></span>
+                </div>
+
+                <div class="input-field">
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                    <span></span>
+                </div>
+
+                <div class="input-field password-field">
+                    <input type="password" name="password" id="signup-password" required>
+                    <label>Password</label>
+                    <span></span>
+                    <i class="fas fa-eye toggle-password" data-target="signup-password"></i>
+                </div>
+
+                <button type="submit" class="auth-btn">Signup</button>
+
+            </form>
+
+            <p class="switch-link">
+                Already have an account?
+                <a href="/login">Login</a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <script>
+        document.querySelectorAll(".toggle-password").forEach(icon => {
+            icon.addEventListener("click", function () {
+                const target = document.getElementById(this.dataset.target);
+                if (target.type === "password") {
+                    target.type = "text";
+                    this.classList.replace("fa-eye", "fa-eye-slash");
+                } else {
+                    target.type = "password";
+                    this.classList.replace("fa-eye-slash", "fa-eye");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

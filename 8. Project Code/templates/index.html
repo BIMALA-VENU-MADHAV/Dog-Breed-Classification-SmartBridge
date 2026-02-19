@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Breed Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1 class="title">Dog Breed Classification 🐕</h1>
+
+        <form id="upload-form">
+            <div class="upload-box" id="drop-area">
+                <input type="file" id="file-input" accept="image/*">
+                <div class="upload-text">
+                    <p><i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color);"></i></p>
+                    <p>Drag and drop an image here or click to select</p>
+                    <p style="font-size: 0.9rem; color: #666;">Supported formats: JPG, JPEG, PNG</p>
+                </div>
+                <div class="preview-container">
+                    <img id="preview" src="#" alt="Preview">
+                    <button type="button" id="remove-image-btn" class="delete-btn" aria-label="Remove image">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="upload-overlay">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 36 36">
+                            <circle class="bg" cx="18" cy="18" r="16" />
+                            <circle class="progress" cx="18" cy="18" r="16" />
+                            <path class="tick" d="M6 18L14 26L30 10" stroke-width="3" fill="none" />
+                        </svg>
+                    </div>
+                    <div class="upload-percentage">0%</div>
+                    <div class="upload-status">Uploading image...</div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" id="predict-btn" disabled>
+                    <i class="fas fa-magic"></i> Predict Breed
+                </button>
+                <button type="button" id="reset-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+
+            <div id="progress-container" style="display: none;">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div id="result-area" class="result-area">
+                <div id="loader" style="display: none;" class="loader"></div>
+                <div id="prediction-result"></div>
+            </div>
+        </form>
+
+        <div class="recent-predictions-header">
+            <h2>Recent Predictions <span class="count">0</span></h2>
+            <button id="clear-history-btn" type="button">
+                <i class="fas fa-trash-alt"></i> Clear History
+            </button>
+        </div>
+        <div class="recent-predictions" id="recent-predictions">
+            <!-- Recent predictions will be dynamically added here -->
+        </div>
+    </div>
+
+
+    <div id="toast" class="toast"></div>
+
+
+
+ <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>
+ 
