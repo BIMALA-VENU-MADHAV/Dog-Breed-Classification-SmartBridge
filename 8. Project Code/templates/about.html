@@ -88,6 +88,18 @@
         </div>
     </section>
 
+    <footer class="footer footer-about">
+        <div class="footer-container">
+            <p>© <span id="year"></span> DogClassifier. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
     <script>
         const toggle = document.getElementById("navToggle");
         const menu = document.getElementById("navMenu");

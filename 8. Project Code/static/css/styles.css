@@ -30,6 +30,8 @@
 
 
 
+
+
 .home-btn {
   display: inline-block;
   margin-top: 30px;
@@ -59,11 +61,7 @@
 }
 
 
-
-/* ===============================
-   Hero Landing Page
-================================ */
-
+ 
 
 
 .hero-card {
@@ -218,22 +216,24 @@
 
 
 
+
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 10px;
+  width: 96%;
   backdrop-filter: blur(12px);
+  border-radius: 14px;
   box-shadow: 0 4px 20px var(--shadow-color);
   z-index: 999;
   animation: slideDown 0.6s ease;
 }
+
 
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -243,17 +243,39 @@
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 15px 25px;
+  padding: 0 25px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+
+.nav-logo,
+.nav-link {
+  color: var(--text-color);
+}
+
 .nav-logo {
   font-weight: 700;
   font-size: 1.3rem;
-  color: var(--primary-color);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-logo:hover,
+.nav-link:hover {
+  color: var(--primary-color);
 }
 
 .nav-menu {
@@ -261,33 +283,41 @@
   display: flex;
   gap: 25px;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
+.nav-menu li {
+  display: flex;
+  align-items: center;
 }
 
 .nav-btn {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: var(--btn-primary-text);
-  padding: 6px 14px;
-  border-radius: 8px;
+  padding: 8px 20px;
+  border-radius: 50px;
   text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
 }
 
 .nav-btn-outline {
   border: 2px solid var(--primary-color);
-  padding: 6px 14px;
-  border-radius: 8px;
-  text-decoration: none;
   color: var(--primary-color);
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-btn-outline:hover {
+  transform: translateY(-2px);
 }
 
 .dropdown {
@@ -295,19 +325,26 @@
 }
 
 .dropdown-menu {
-  display: none;
   position: absolute;
+  top: 120%;
   right: 0;
-  background: var(--card-bg);
+  min-width: 170px;
   border-radius: 10px;
-  box-shadow: 0 8px 20px var(--shadow-color);
   padding: 10px 0;
+  background: var(--card-bg);
+  box-shadow: 0 8px 20px var(--shadow-color);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .dropdown-menu.show {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
-
 
 .dropdown-menu a {
   display: block;
@@ -321,34 +358,45 @@
   background: var(--result-bg);
 }
 
-
 .nav-toggle {
   display: none;
   font-size: 1.4rem;
   cursor: pointer;
-  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
+
   .nav-toggle {
     display: block;
   }
 
   .nav-menu {
     position: absolute;
-    top: 70px;
+    top: 75px;
     right: 20px;
     flex-direction: column;
-    background: var(--card-bg);
+    align-items: flex-start;
     width: 220px;
     padding: 20px;
-    display: none;
     border-radius: 12px;
+    background: var(--card-bg);
     box-shadow: 0 10px 25px var(--shadow-color);
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .nav-menu.active {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-link,
+  .nav-btn,
+  .nav-btn-outline {
+    width: 100%;
   }
 }
 
@@ -357,7 +405,56 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+
+.footer {
+  width: 100%;
+  padding: 30px 20px;
+  border-top: 1px solid var(--shadow-color);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  letter-spacing: 0.3px;
+}
+
+.footer-home {
+  margin-top: 150px;
+}
+
+.footer-about {
+  margin-top: 60px;
+}
+
+.footer-contact {
+  margin-top: 130px;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 25px 15px;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer-home,
+  .footer-about,
+  .footer-contact {
+    margin-top: 60px;
+  }
 }
 
 
